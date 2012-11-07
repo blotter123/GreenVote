@@ -1,8 +1,10 @@
 <div class="container-fluid">
   <div class="row-fluid">
-  	<h4> Welcome to GreenVote! </h4>
-    <div class="span2">
-    	<h1> Vote! </h2>
+  	</br>
+	</br>
+    <div class="span4">
+    	<div class="hero-unit">
+    	<h4> What's The Temperature Where You're At like? </h4>
     	       	<%= form_for(@vote) do |f| %>
  		    	<% if @vote.errors.any? %>
     			<div id="error_explanation">
@@ -14,22 +16,41 @@
       				</ul>
     			</div>
   				<% end %>
-  			<%= f.collection_select :room_id, @rooms, :id, :name %>
- 	 		<div class="controls">
+  			<div class="control-group">
+  				<label class="control-label"> Room: </label>
+  				<%= f.collection_select :room_id, @rooms, :id, :name %>
+  				</br></br>
+  			</div>
+ 	 		Temperature:<div class="controls">
   				<select name="vote[rating]">
-  					<option value="1"> Too Cold! </option>
-  					<option value="2"> Kinda Cold </option>
-  					<option value="3"> Just Right! </option>
-  					<option value="4"> Kinda Hot </option>
-  					<option value="5"> Too Hot! </option>
+  					<option value="-2"> Too Cold! </option>
+  					<option value="-1"> Kinda Cold </option>
+  					<option value="0"> Just Right! </option>
+  					<option value="1"> Kinda Hot </option>
+  					<option value="2"> Too Hot! </option>
   				</select>
   			</div>
-
-  				<%= f.submit class: "btn btn-primary" %>
+			<input class="btn btn-success" name="commit" type="submit" value="Vote!">
   				<% end %>
+  		</div>
     </div>
-    <div class="span10">
+    <div class="span6">
       <!--Body content-->
+    </div>
+    <div class="span3">
+    	<h2> Rooms: </h2>
+    	<table class="table">
+  			<tr>
+  			  <th>Name</th>
+  			  <th>Temp</th>
+ 			</tr>
+			<% @rooms.each do |room| %>
+  			<tr>
+  			  <td><%= room.name %></td>
+ 			  <td><%= room.temp %></td>
+  			</tr>
+			<% end %>
+		</table>
     </div>
   </div>
 </div>
