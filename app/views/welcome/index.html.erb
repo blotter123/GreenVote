@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row-fluid">
+  	<h4> Welcome to GreenVote! </h4>
+    <div class="span2">
+    	<h1> Vote! </h2>
+    	       	<%= form_for(@vote) do |f| %>
+ 		    	<% if @vote.errors.any? %>
+    			<div id="error_explanation">
+      				<h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+      				<ul>
+      					<% @vote.errors.full_messages.each do |msg| %>
+        				<li><%= msg %></li>
+      					<% end %>
+      				</ul>
+    			</div>
+  				<% end %>
+  			<%= f.collection_select :room_id, @rooms, :id, :name %>
+ 	 		<div class="controls">
+  				<select name="vote[rating]">
+  					<option value="1"> Too Cold! </option>
+  					<option value="2"> Kinda Cold </option>
+  					<option value="3"> Just Right! </option>
+  					<option value="4"> Kinda Hot </option>
+  					<option value="5"> Too Hot! </option>
+  				</select>
+  			</div>
+
+  				<%= f.submit class: "btn btn-primary" %>
+  				<% end %>
+    </div>
+    <div class="span10">
+      <!--Body content-->
+    </div>
+  </div>
+</div>
