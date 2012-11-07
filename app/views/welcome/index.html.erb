@@ -4,7 +4,7 @@
 	</br>
     <div class="span4">
     	<div class="hero-unit">
-    	<h4> What's The Temperature Where You're At like? </h4>
+    	<h4> What's The Temperature Like Where You're At? </h4>
     	       	<%= form_for(@vote) do |f| %>
  		    	<% if @vote.errors.any? %>
     			<div id="error_explanation">
@@ -34,20 +34,19 @@
   				<% end %>
   		</div>
     </div>
-    <div class="span6">
-      <!--Body content-->
-    </div>
-    <div class="span3">
+    <div class="span4 offset2">
     	<h2> Rooms: </h2>
     	<table class="table">
   			<tr>
   			  <th>Name</th>
-  			  <th>Temp</th>
+  			  <th>Current Temp</th>
+  			  <th>Num Votes</th>
  			</tr>
 			<% @rooms.each do |room| %>
   			<tr>
   			  <td><%= room.name %></td>
  			  <td><%= room.temp %></td>
+ 			  <td><%= room.votes.length %></td>
   			</tr>
 			<% end %>
 		</table>

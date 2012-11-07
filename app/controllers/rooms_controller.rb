@@ -9,7 +9,8 @@ class RoomsController < ApplicationController
       format.json { render json: @rooms }
     end
   end
-
+  def average
+  end
   # GET /rooms/1
   # GET /rooms/1.json
   def show
