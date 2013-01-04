@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Rating</th>
+    <th>Amount</th>
     <th>Room</th>
     <th>User ID</th>
     <th></th>
@@ -11,7 +11,7 @@
 
 <% @votes.each do |vote| %>
   <tr>
-    <td><%= vote.rating %></td>
+    <td><%= vote.amount %></td>
     <td><%= vote.room_id %></td>
     <td><%= vote.user_id %></td>
     <td><%= link_to 'Show', vote %></td>
