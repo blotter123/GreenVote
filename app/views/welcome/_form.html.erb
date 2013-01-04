@@ -10,16 +10,22 @@
               </ul>
             </div>
           <% end %>
-        <div class="control-group">
-          Room:
-          <%= f.collection_select :room_id, @rooms, :id, :name ,{}, {:style => "width:100px"}%>
-          </br>
+        <div>
+        <%= f.label :building_id, "Where are you?" %>
+        <%= f.collection_select :building_id, Building.order(:name), :id, :name, include_blank: true%>
         </div>
+        <div>
+          </br>
+          <%= f.label :room_id, "Room" %>
+          <%= f.grouped_collection_select :room_id, Building.order(:name), :rooms, :name , :id, :name,include_blank: true%>
+        </div>
+      <div>
       Temperature:
       <div id="slider"></div>
       </br>
       <input id="rating" type="hidden" name="vote[amount]" value="0" />
       <input class="btn btn-success" name="commit" type="submit" value="Vote!">
+      </div>
           <% end %>
         </div>
     </div>

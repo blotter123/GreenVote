@@ -1,6 +1,6 @@
 GreenVote::Application.routes.draw do
   resources :votes
-
+  resources :buildings
   devise_for :users
   
   resources :rooms do

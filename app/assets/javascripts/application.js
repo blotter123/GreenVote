@@ -13,6 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-h1 a{
-	font-family: 'Donegal One', serif;
-}
