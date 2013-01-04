@@ -9,8 +9,12 @@ class RoomsController < ApplicationController
       format.json { render json: @rooms }
     end
   end
-  def average
+  
+  def import
+    Room.import(params[:file])
+    redirect_to rooms_url, notice: "Rooms imported."
   end
+
   # GET /rooms/1
   # GET /rooms/1.json
   def show

@@ -1,0 +1,58 @@
+<div class="hero-unit">
+            <%= form_for(@vote) do |f| %>
+              <% if @vote.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+                 <ul>
+                  <% @vote.errors.full_messages.each do |msg| %>
+                   <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+        <div class="control-group">
+          Room:
+          <%= f.collection_select :room_id, @rooms, :id, :name ,{}, {:style => "width:100px"}%>
+          </br>
+        </div>
+      Temperature:
+      <div id="slider"></div>
+      </br>
+      <input id="rating" type="hidden" name="vote[rating]" value="0" />
+      <input class="btn btn-success" name="commit" type="submit" value="Vote!">
+          <% end %>
+        </div>
+    </div>
+    <script type="text/javascript">
+      $("#left").css("opacity",.7);
+      $("#right").css("opacity",.7);
+      $(function() {
+        $( "#slider" ).slider({
+            value:0,
+            min: -2,
+            max: 2,
+            step: 1,
+            slide: function( event, ui ) {
+                oright = .7 + ui.value*.15;
+                oleft = .7 - ui.value*.15;
+                wright = 50 + ui.value*20;
+                wleft = 50 - ui.value *20;
+
+            //    $("#right").css("opacity",right);
+           //     $("#right").css("width",wright + "%");
+           //     $("#left").css("opacity",left);
+         //       $("#left").css("width",wleft  + "%");
+                $('#left').animate({
+                  opacity: oleft,
+                  width: wleft + "%"
+                }, 500, function() {
+                });
+                $('#right').animate({
+                  opacity: oright,
+                  width: wright + "%"
+                }, 500, function() {
+                });
+            }
+        });
+    });
+  </script>

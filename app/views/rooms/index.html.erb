@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Temp</th>
+    <th>Building_id</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,14 +12,17 @@
 <% @rooms.each do |room| %>
   <tr>
     <td><%= room.name %></td>
-    <td><%= room.temp %></td>
+    <td><%= getName(room.building_id) %></td>
     <td><%= link_to 'Show', room %></td>
     <td><%= link_to 'Edit', edit_room_path(room) %></td>
     <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
-
+<%= form_tag import_rooms_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
 <br />
 
 <%= link_to 'New Room', new_room_path %>

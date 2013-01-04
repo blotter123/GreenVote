@@ -1,55 +1,15 @@
-<div class="container-fluid">
-  <div class="row-fluid">
-  	</br>
-	</br>
-    <div class="span4">
-    	<div class="hero-unit">
-    	<h4> What's The Temperature Like Where You're At? </h4>
-    	       	<%= form_for(@vote) do |f| %>
- 		    	<% if @vote.errors.any? %>
-    			<div id="error_explanation">
-      				<h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
-      				<ul>
-      					<% @vote.errors.full_messages.each do |msg| %>
-        				<li><%= msg %></li>
-      					<% end %>
-      				</ul>
-    			</div>
-  				<% end %>
-  			<div class="control-group">
-  				<label class="control-label"> Room: </label>
-  				<%= f.collection_select :room_id, @rooms, :id, :name %>
-  				</br></br>
-  			</div>
- 	 		Temperature:<div class="controls">
-  				<select name="vote[rating]">
-  					<option value="-2"> Too Cold! </option>
-  					<option value="-1"> Kinda Cold </option>
-  					<option value="0"> Just Right! </option>
-  					<option value="1"> Kinda Hot </option>
-  					<option value="2"> Too Hot! </option>
-  				</select>
-  			</div>
-			<input class="btn btn-success" name="commit" type="submit" value="Vote!">
-  				<% end %>
-  		</div>
-    </div>
-    <div class="span4 offset2">
-    	<h2> Rooms: </h2>
-    	<table class="table">
-  			<tr>
-  			  <th>Name</th>
-  			  <th>Current Temp</th>
-  			  <th>Num Votes</th>
- 			</tr>
-			<% @rooms.each do |room| %>
-  			<tr>
-  			  <td><%= room.name %></td>
- 			  <td><%= room.temp %></td>
- 			  <td><%= room.votes.length %></td>
-  			</tr>
-			<% end %>
-		</table>
-    </div>
-  </div>
+<div  id="right">
+  <section id="c1" data-speed="100" data-type="background">
+    <article>
+    </article>
+  </section>
+</div>
+<div id="left">
+  <section id="c2" data-speed="100" data-type="background">
+    <article>
+    </article>
+  </section>
+</div>
+<div id="top">
+  <%= render 'form' %>
 </div>
