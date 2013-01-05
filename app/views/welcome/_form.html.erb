@@ -31,8 +31,10 @@
         </div>
     </div>
     <script type="text/javascript">
+      $("#justright").hide();
       $("#left").css("opacity",.7);
       $("#right").css("opacity",.7);
+      $('#vote_building_id').change()
       $(function() {
         $( "#slider" ).slider({
             orientation: "horizontal",
@@ -50,16 +52,42 @@
                 if(ui.value > 0) {
                   $("#Cold").parent().fadeOut();
                   $("#Hot").parent().fadeIn();
+                  $("#justright").fadeOut();
                 }
                 if(ui.value < 0) {
                   $("#Cold").parent().fadeIn();
                   $("#Hot").parent().fadeOut();
-                }
-                if(ui.value == 0) {
-                  $("#Cold").parent().fadeIn();
-                  $("#Hot").parent().fadeIn();
+                  $("#justright").fadeOut();
                 }
 
+                if(ui.value == 0) {
+                  $('#Hot').parent().fadeOut();
+                  $('#Cold').parent().fadeOut();
+                  $("#justright").fadeIn();
+                }
+
+                if(ui.value == 1) {
+                  $('#Hot').fadeOut(500, function() {
+                    $(this).text("It's Hot!").fadeIn(500);
+                  });
+                }
+
+                if(ui.value == 2) {
+                  $('#Hot').fadeOut(500, function() {
+                    $(this).text("It's Too Hot!").fadeIn(500);
+                  });
+                }
+                if(ui.value == -1) {
+                  $('#Cold').fadeOut(500, function() {
+                    $(this).text("It's Cold!").fadeIn(500);
+                  });
+                }
+                
+                if(ui.value == -2) {
+                  $('#Cold').fadeOut(500, function() {
+                    $(this).text("It's Too Cold!").fadeIn(500);
+                  });
+                }
                 $('#left').animate({
                   opacity: oleft,
                   width: wleft + "%"

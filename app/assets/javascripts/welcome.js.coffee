@@ -11,9 +11,9 @@ jQuery ->
   	escaped_building = building.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
   	options = $(rooms).filter("optgroup[label='#{escaped_building}']").html()
   	if options
+      $('#Hot').parent().fadeOut()
+      $('#Cold').parent().fadeOut()
+      $('#justright').fadeIn()
   		$('#vote_room_id').html(options)
-  		$('#vote_room_id').parent().fadeIn()
-  	else
-  		$('#vote_room_id').parent().fadeOut()
   	if building.length == 0
   		$('#slider').parent().fadeOut()
