@@ -29,7 +29,6 @@ end
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'uglifier', '>= 1.0.3'
 
-gem 'twitter-bootstrap-rails'
 gem 'jquery-rails'
 gem 'devise' 
 gem 'roo'
