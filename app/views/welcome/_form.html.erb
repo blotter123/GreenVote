@@ -34,9 +34,16 @@
       $("#left").css("opacity",.7);
       $("#right").css("opacity",.7);
       $('#vote_building_id').change(function() {
-        $('#Hot').parent().fadeOut();
-        $('#Cold').parent().fadeOut();
-        $('#justright').parent().fadeIn();
+          if($("#slider").slider("value") == 0) {
+          $("#Cold").parent().fadeIn();
+          $("#Hot").parent().fadeIn();        
+          $('#Cold').fadeOut(500, function() {
+              $(this).text("It's Just").fadeIn(500);
+          });
+          $('#Hot').fadeOut(500, function() {
+              $(this).text("About Right!").fadeIn(500);
+          });
+        }
       });
       $(function() {
         $( "#slider" ).slider({
@@ -64,9 +71,14 @@
                 }
 
                 if(ui.value == 0) {
-                  $('#Hot').parent().fadeOut();
-                  $('#Cold').parent().fadeOut();
-                  $("#justright").parent().fadeIn();
+                  $("#Cold").parent().fadeIn();
+                  $("#Hot").parent().fadeIn();
+                   $('#Cold').fadeOut(500, function() {
+                    $(this).text("It's Just").fadeIn(500);
+                  });
+                   $('#Hot').fadeOut(500, function() {
+                    $(this).text("About Right!").fadeIn(500);
+                  });
                 }
 
                 if(ui.value == 1) {
