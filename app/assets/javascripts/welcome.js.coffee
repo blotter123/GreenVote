@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
   $('#vote_room_id').parent().hide()
-  $("#justright").hide();
+  $("#justright").parent().hide();
   $('#slider').parent().hide()
   rooms = $('#vote_room_id').html()
   $('#vote_building_id').change ->

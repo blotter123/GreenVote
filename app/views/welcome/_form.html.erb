@@ -36,7 +36,7 @@
       $('#vote_building_id').change(function() {
         $('#Hot').parent().fadeOut();
         $('#Cold').parent().fadeOut();
-        $("#justright").fadeIn();
+        $('#justright').parent().fadeIn();
       });
       $(function() {
         $( "#slider" ).slider({
@@ -55,18 +55,18 @@
                 if(ui.value > 0) {
                   $("#Cold").parent().fadeOut();
                   $("#Hot").parent().fadeIn();
-                  $("#justright").fadeOut();
+                  $("#justright").parent().fadeOut();
                 }
                 if(ui.value < 0) {
                   $("#Cold").parent().fadeIn();
                   $("#Hot").parent().fadeOut();
-                  $("#justright").fadeOut();
+                  $("#justright").parent().fadeOut();
                 }
 
                 if(ui.value == 0) {
                   $('#Hot').parent().fadeOut();
                   $('#Cold').parent().fadeOut();
-                  $("#justright").fadeIn();
+                  $("#justright").parent().fadeIn();
                 }
 
                 if(ui.value == 1) {
