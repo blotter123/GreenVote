@@ -33,6 +33,11 @@
     <script type="text/javascript">
       $("#left").css("opacity",.7);
       $("#right").css("opacity",.7);
+      $('#vote_building_id').change(function() {
+        $('#Hot').parent().fadeOut();
+        $('#Cold').parent().fadeOut();
+        $("#justright").fadeIn();
+      });
       $(function() {
         $( "#slider" ).slider({
             orientation: "horizontal",

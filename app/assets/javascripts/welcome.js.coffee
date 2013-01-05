@@ -7,9 +7,6 @@ jQuery ->
   $('#slider').parent().hide()
   rooms = $('#vote_room_id').html()
   $('#vote_building_id').change ->
-    $('#Hot').parent().fadeOut()
-    $('#Cold').parent().fadeOut()
-    $('#justright').fadeIn()
   	$('#slider').parent().fadeIn()
   	building = $('#vote_building_id :selected').text()
   	escaped_building = building.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
