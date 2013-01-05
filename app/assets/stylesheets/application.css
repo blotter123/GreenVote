@@ -11,11 +11,9 @@
  *= require_self
  *= require_tree .
  */
-#tag_cloud {
-  margin: 0 auto;
-  width: 400px;
-  line-height: 1.6em;
-  .s { font-size: 0.8em; }
-  .m { font-size: 1.2em; }
-  .l { font-size: 1.8em; }
+ @font-face {
+  font-family: 'Donegal One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Donegal One'), local('DonegalOne-Regular'), url(http://themes.googleusercontent.com/static/fonts/donegalone/v1/LIom94sU9XlcGbVvjBz0oLrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
 }

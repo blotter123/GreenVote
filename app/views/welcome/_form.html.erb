@@ -11,20 +11,21 @@
             </div>
           <% end %>
         <div>
-        <%= f.label :building_id, "Where are you?" %>
+        <h2><%= f.label :building_id, "Where are you?" %> </h2>
         <%= f.collection_select :building_id, Building.order(:name), :id, :name, include_blank: true%>
         </div>
         <div>
           </br>
-          <%= f.label :room_id, "Room" %>
+          <h2> <%= f.label :room_id, "Room:" %> </h2>
           <%= f.grouped_collection_select :room_id, Building.order(:name), :rooms, :name , :id, :name,include_blank: true%>
         </div>
       <div>
-      Temperature:
+      </br>
+      <h2>Temperature: </h2>
       <div id="slider"></div>
       </br>
       <input id="rating" type="hidden" name="vote[amount]" value="0" />
-      <input class="btn btn-success" name="commit" type="submit" value="Vote!">
+      <input class="btn btn-large btn-success" name="commit" type="submit" value="GreenVote!">
       </div>
           <% end %>
         </div>
@@ -46,16 +47,25 @@
                 oleft = .7 - ui.value*.15;
                 wright = 50 + ui.value*20;
                 wleft = 50 - ui.value *20;
+                if(ui.value > 0) {
+                  $("#Cold").parent().fadeOut();
+                  $("#Hot").parent().fadeIn();
+                }
+                if(ui.value < 0) {
+                  $("#Cold").parent().fadeIn();
+                  $("#Hot").parent().fadeOut();
+                }
+                if(ui.value == 0) {
+                  $("#Cold").parent().fadeIn();
+                  $("#Hot").parent().fadeIn();
+                }
 
-            //    $("#right").css("opacity",right);
-           //     $("#right").css("width",wright + "%");
-           //     $("#left").css("opacity",left);
-         //       $("#left").css("width",wleft  + "%");
                 $('#left').animate({
                   opacity: oleft,
                   width: wleft + "%"
                 }, 500, function() {
                 });
+
                 $('#right').animate({
                   opacity: oright,
                   width: wright + "%"
