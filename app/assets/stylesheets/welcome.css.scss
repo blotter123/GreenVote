@@ -2,8 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-	width: 100%;
-	height: 100%;
+  position: fixed;
 }
 h1 a{
 	font-family: 'Donegal One', serif;
@@ -12,12 +11,14 @@ h1 a{
 {
   float:left;
   width:50%;
+  height: 100%;
 }
 
 #right
 {
   float:right;
   width:50%;
+  height: 100%;
 }
 #top {
   position: fixed;
@@ -25,15 +26,13 @@ h1 a{
   left: 35%;
   width: 30%;
 }
-#justtop {
-  position: fixed;
-  width: 100%;
-  top: 5%;
-}
 
 #c1 { 
-	background: url(c1.jpg) 100% 0 fixed; 
-	height: 1080px;  
+	background: url(c1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 	margin: 0 auto; 
     width: 100%; 
     position: relative; 
@@ -41,12 +40,15 @@ h1 a{
 }
 
 #c2 { 
-	background: url(c2.jpg) 100% 0 fixed; 
-	height: 1080px;
+	background: url(c2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 	margin: 0 auto; 
-    width: 100%; 
-    position: relative; 
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  width: 100%; 
+  position: relative; 
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
 
 

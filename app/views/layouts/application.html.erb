@@ -10,29 +10,17 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-
     <div class="container">
-      <div id="login">
       <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
             <h1 class="Title"><%= link_to 'GreenVote', root_path, {style:"color:#81F781"} %></h1>
         </div>
       </div>
     </div>
+    <div>
+      <% if alert %> <div class="alert alert-error"> <%= alert %> </div><% end %>
+      <% if notice %><div class="alert alert-success"><%= notice %> </div><% end %>
     </div>
-
-      <% if alert %>
-      <div class="alert alert-error">
-        <%= alert %>
-      </div>
-      <% end %>
-      <% if notice %>
-      <div class="alert alert-success">
-        <%= notice %>
-        <% end %>
-      </div>
-      
-    </div>
-      <%= yield %>
+    <%= yield %>
   </body>
 </html>

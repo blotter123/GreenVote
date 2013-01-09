@@ -15,9 +15,7 @@ class VotesController < ApplicationController
   # GET /votes/1.json
   def show
     @vote = Vote.find(params[:id])
-
     respond_to do |format|
-      format.html # show.html.erb
       format.json { render json: @vote }
     end
   end
@@ -46,8 +44,7 @@ class VotesController < ApplicationController
     respond_to do |format|
       if @vote.save
         flash[:notice] = 'Successfully voted.'
-        format.html { redirect_to :controller => 'welcome'}
-        format.json { render json: @vote, status: :created, location: @vote }
+        format.json { redirect_to :controller => 'welcome'}
       else
         format.html { render action: "new" }
         format.json { render json: @vote.errors, status: :unprocessable_entity }
@@ -59,7 +56,6 @@ class VotesController < ApplicationController
   # PUT /votes/1.json
   def update
     @vote = Vote.find(params[:id])
-
     respond_to do |format|
       if @vote.update_attributes(params[:vote])
         format.html { redirect_to @vote, notice: 'Vote was successfully updated.' }

@@ -1,5 +1,5 @@
 <div class="hero-unit">
-            <%= form_for(@vote) do |f| %>
+            <%= form_for(@vote, :html => {:'data-type' => 'json'}) do |f| %>
               <% if @vote.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
@@ -117,4 +117,30 @@
             }
         });
     });
+
+      $( document ).ready( function() {
+        var $body = $('#welcome-unit'); //Cache this for performance
+        
+        var setBodyScale = function() {
+          var scaleFactor = 0.35,
+            scaleSource = $body.width(),
+            maxScale = 600,
+            minScale = 30;
+
+          var fontSize = scaleSource * scaleFactor; //Multiply the width of the body by the scaling factor:
+
+          if (fontSize > maxScale) fontSize = maxScale;
+          if (fontSize < minScale) fontSize = minScale; //Enforce the minimum and maximums
+
+          $('body').css('font-size', fontSize + '%');
+        }
+      
+          $(window).resize(function(){
+          setBodyScale();
+        });
+        
+        //Fire it when the page first loads:
+        setBodyScale();
+      });
+    
   </script>

@@ -63,7 +63,6 @@ input, select { vertical-align: middle; }
  * Font normalization inspired by YUI Library's fonts.css: developer.yahoo.com/yui/
  */
 
-body { font:13px/1.231 sans-serif; *font-size:small; } /* Hack retained to preserve specificity */
 select, input, textarea, button { font:99% sans-serif; }
 
 /* Normalize monospace sizing:
@@ -76,7 +75,6 @@ pre, code, kbd, samp { font-family: monospace, sans-serif; }
  */
 
 /* Always force a scrollbar in non-IE */
-html { overflow-y: scroll; }
 
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
@@ -156,7 +154,6 @@ body, select, input, textarea {
 }
 
 /* Headers (h1, h2, etc) have no default font-size or margin; define those yourself */
-h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 
 a, a:active, a:visited { color: #607890; }
 a:hover { color: #036; }

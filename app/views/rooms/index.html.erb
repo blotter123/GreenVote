@@ -19,10 +19,6 @@
   </tr>
 <% end %>
 </table>
-<%= form_tag import_rooms_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
-<% end %>
 <br />
 
 <%= link_to 'New Room', new_room_path %>
