@@ -1,0 +1,114 @@
+/**
+ * Parallax Scrolling Tutorial
+ * For NetTuts+
+ *  
+ * Author: Mohiuddin Parekh
+ *	http://www.mohi.me
+ * 	@mohiuddinparekh   
+ */
+
+#login {
+	margin: 0 auto;
+}                             
+        /* http://css-tricks.com/simple-styles-for-horizontal-rules/ */
+        hr 
+            {
+            border: 0;
+            height: 1px;
+            background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+            background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+            background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+            background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+            }
+        a
+            {
+            color:#111;             
+            }
+        h1 a
+            {
+            text-decoration:none;
+            }
+        h1:hover
+            {
+            color:#a82222;
+            }
+        p
+            {
+            margin:0 0 1.5em 0;
+            line-height:1.5em;
+            }
+        dt
+            {
+            font-family:monospace;
+            }
+        pre
+            {
+            line-height:1.2;
+            }
+        footer
+            {
+            border-top:3px double #aaa;
+            padding-top:1em;
+            }
+        footer section
+            {
+            border-bottom:3px double #aaa;
+            padding-bottom:1em;
+            margin-bottom:1em;
+            }
+        sup a
+            {
+            text-decoration:none;
+            }
+        .amp
+            {
+            font-family:Baskerville,'Goudy Old Style',Palatino,'Book Antiqua',serif;
+            font-style:italic;
+            font-weight:lighter;
+            }
+        /* Set font-sizes for the headings to be given the slabText treatment */
+        h1
+            {
+            text-align:center;      
+            line-height:1;   
+            color:#222;             
+            /* Remember to set the correct font weight if using fontface */
+            font-weight:normal;
+            max-width: 100%;
+            font-size: 40px;
+            }
+        /* Smaller font-size for the side-by-side demo */
+        /* Fun with media queries - resize your browser to view changes. */
+        @media screen and (max-width: 960px) 
+            {
+                body
+                    {                             
+                    min-width:10em;
+                    }
+                .col-1,
+                .col-2
+                    {
+                    float:none;
+                    margin:0;
+                    width:100%;
+                    }
+                h1
+                    {
+                    font-size:150%;
+                    }
+                h2
+                    {
+                    font-size:22px;
+                    }
+            }        
+        @media screen and (max-width: 460px) 
+            {
+                h1
+                    {
+                    font-size:100%;
+                    }
+                h2
+                    {
+                    font-size:18px;
+                    }
+            }

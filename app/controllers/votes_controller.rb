@@ -44,6 +44,7 @@ class VotesController < ApplicationController
     respond_to do |format|
       if @vote.save
         flash[:notice] = 'Successfully voted.'
+        format.html { redirect_to :controller => 'welcome'}
         format.json { redirect_to :controller => 'welcome'}
       else
         format.html { render action: "new" }

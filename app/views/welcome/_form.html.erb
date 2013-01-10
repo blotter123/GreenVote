@@ -47,18 +47,18 @@
       });
       $(function() {
         $( "#slider" ).slider({
-            orientation: "horizontal",
+            orientation: "vertical",
             range: "min",
             value:0,
-            min: -2,
-            max: 2,
+            min: -50,
+            max: 50,
             animate: true,
             slide: function( event, ui ) {
                 $("#rating").val(ui.value);
-                oright = .7 + ui.value*.15;
-                oleft = .7 - ui.value*.15;
-                wright = 50 + ui.value*20;
-                wleft = 50 - ui.value *20;
+                oright = .7 + ui.value*0.01;
+                oleft = .7 - ui.value*0.01;
+                wright = 50 + ui.value*1;
+                wleft = 50 - ui.value *1;
                 if(ui.value > 0) {
                   $("#Cold").parent().fadeOut();
                   $("#Hot").parent().fadeIn();
@@ -70,7 +70,7 @@
                   $("#justright").parent().fadeOut();
                 }
 
-                if(ui.value == 0) {
+                if(ui.value <10 && ui.value > -10) {
                   $("#Cold").parent().fadeIn();
                   $("#Hot").parent().fadeIn();
                    $('#Cold').fadeOut(500, function() {
@@ -81,24 +81,24 @@
                   });
                 }
 
-                if(ui.value == 1) {
+                if(ui.value > 10 && ui.value < 30) {
                   $('#Hot').fadeOut(500, function() {
                     $(this).text("It's Hot!").fadeIn(500);
                   });
                 }
 
-                if(ui.value == 2) {
+                if(ui.value >= 30) {
                   $('#Hot').fadeOut(500, function() {
                     $(this).text("It's Too Hot!").fadeIn(500);
                   });
                 }
-                if(ui.value == -1) {
+                if(ui.value < -10 && ui.value > -30) {
                   $('#Cold').fadeOut(500, function() {
                     $(this).text("It's Cold!").fadeIn(500);
                   });
                 }
                 
-                if(ui.value == -2) {
+                if(ui.value <= -30) {
                   $('#Cold').fadeOut(500, function() {
                     $(this).text("It's Too Cold!").fadeIn(500);
                   });
@@ -106,41 +106,15 @@
                 $('#left').animate({
                   opacity: oleft,
                   width: wleft + "%"
-                }, 500, function() {
+                }, 10, function() {
                 });
 
                 $('#right').animate({
                   opacity: oright,
                   width: wright + "%"
-                }, 500, function() {
+                }, 10, function() {
                 });
             }
         });
     });
-
-      $( document ).ready( function() {
-        var $body = $('#welcome-unit'); //Cache this for performance
-        
-        var setBodyScale = function() {
-          var scaleFactor = 0.35,
-            scaleSource = $body.width(),
-            maxScale = 600,
-            minScale = 30;
-
-          var fontSize = scaleSource * scaleFactor; //Multiply the width of the body by the scaling factor:
-
-          if (fontSize > maxScale) fontSize = maxScale;
-          if (fontSize < minScale) fontSize = minScale; //Enforce the minimum and maximums
-
-          $('body').css('font-size', fontSize + '%');
-        }
-      
-          $(window).resize(function(){
-          setBodyScale();
-        });
-        
-        //Fire it when the page first loads:
-        setBodyScale();
-      });
-    
   </script>
