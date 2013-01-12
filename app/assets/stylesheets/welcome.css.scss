@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
   position: fixed;
+  width: 98%;
 }
 h1 a{
 	font-family: 'Donegal One', serif;
@@ -22,7 +23,7 @@ h1 a{
 }
 #top {
   position: fixed;
-  top: 40%;
+  top: 20%;
   left: 35%;
   width: 30%;
 }
@@ -34,9 +35,9 @@ h1 a{
   -o-background-size: cover;
   background-size: cover;
 	margin: 0 auto; 
-    width: 100%; 
-    position: relative; 
-    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  width: 100%; 
+  position: relative; 
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
 }
 
 #c2 { 
@@ -72,25 +73,28 @@ h1 a{
 
 .welcome-unit {
   font-family: 'Lobster', cursive;
-  padding: 20px;
+  padding: 10px;
   margin-bottom: 30px;
   font-size: 18px;
   font-weight: 200;
   line-height: 30px;
   text-align: center;
   color: inherit;
-   background: rgba(239, 231, 231, .9);
+   background: rgba(239, 231, 231, .8);
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
 
 }
+#slider {
+  margin: 0 auto;
+}
 
 .welcome-unit h1 {
   font-family: 'Lobster', cursive;
-  padding: 20px;
+  padding: 0px;
   margin-bottom: 0;
-  font-size: 50px;
+  font-size: 40px;
   line-height: 1;
   letter-spacing: -1px;
   color: inherit;

@@ -5991,7 +5991,7 @@ a.badge:hover {
   line-height: 30px;
   text-align: center;
   color: inherit;
-   background: rgba(239, 231, 231, .9);
+   background: rgba(239, 231, 231, .8);
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;

@@ -23,7 +23,7 @@
       </br>
       <h2>Temperature: </h2>
       </br>
-      <div id="slider"></div>
+      <input class="hidden-desktop" type="range" name="slider-fill" id="slider" value="0" min="-50" max="50" data-highlight="true" orientation="vertical"/>
     </br>
       <input id="rating" type="hidden" name="vote[amount]" value="0" />
       <input class="btn btn-large btn-success" name="commit" type="submit" value="GreenVote!">
@@ -34,6 +34,9 @@
     <script type="text/javascript">
       $("#left").css("opacity",.7);
       $("#right").css("opacity",.7);
+      $( "#slider" ).slider({
+          create: function(event, ui) {}
+      });
       $('#vote_building_id').change(function() {
           if($("#slider").slider("value") == 0) {
           $("#Cold").parent().fadeIn();
@@ -46,33 +49,27 @@
           });
         }
       });
-      $(function() {
-        $( "#slider" ).slider({
-            orientation: "vertical",
-            range: "min",
-            value:0,
-            min: -50,
-            max: 50,
-            animate: true,
-            slide: function( event, ui ) {
-                $("#rating").val(ui.value);
-                oright = .7 + ui.value*0.01;
-                oleft = .7 - ui.value*0.01;
-                wright = 50 + ui.value*1;
-                wleft = 50 - ui.value *1;
 
-                if(ui.value > 10) {
+      $(function() {
+        $( "#slider" ).on('change', function( event, ui ) {
+                $("#rating").val($("#slider").val());
+                oright = .7 + $("#slider").val()*0.01;
+                oleft = .7 - $("#slider").val()*0.01;
+                wright = 50 + $("#slider").val()*1;
+                wleft = 50 - $("#slider").val() *1;
+
+                if($("#slider").val() > 10) {
                   $("#Cold").parent().fadeOut();
                   $("#Hot").parent().fadeIn();
                   $("#justright").parent().fadeOut();
                 }
-                if(ui.value < -10) {
+                if($("#slider").val() < -10) {
                   $("#Cold").parent().fadeIn();
                   $("#Hot").parent().fadeOut();
                   $("#justright").parent().fadeOut();
                 }
 
-                if(ui.value <= 10 && ui.value >= -10 && $("#Hot").text() != "About Right") {
+                if($("#slider").val() <= 10 && $("#slider").val() >= -10 && $("#Hot").text() != "About Right") {
                   $("#Cold").parent().fadeIn();
                   $("#Hot").parent().fadeIn();
                   $('#Cold').fadeOut(100, function() {
@@ -83,24 +80,24 @@
                   });
                 }
 
-                if(ui.value > 10 && ui.value < 30) {
+                if($("#slider").val() > 10 && $("#slider").val() < 30) {
                   $('#Hot').fadeOut(100, function() {
                     $(this).text("It's Hot!").fadeIn(100);
                   });
                 }
 
-                if(ui.value >= 30) {
+                if($("#slider").val() >= 30) {
                   $('#Hot').fadeOut(100, function() {
                     $(this).text("It's Too Hot!").fadeIn(100);
                   });
                 }
-                if(ui.value < -10 && ui.value > -30) {
+                if($("#slider").val() < -10 && $("#slider").val() > -30) {
                   $('#Cold').fadeOut(100, function() {
                     $(this).text("It's Cold!").fadeIn(100);
                   });
                 }
                 
-                if(ui.value <= -30) {
+                if($("#slider").val() <= -30) {
                   $('#Cold').fadeOut(100, function() {
                     $(this).text("It's Too Cold!").fadeIn(100);
                   });
@@ -117,6 +114,6 @@
                 }, 10, function() {
                 });
             }
-        });
-    });
+    );
+});
   </script>
