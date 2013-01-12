@@ -1,3 +1,4 @@
+<script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
 <div class="hero-unit">
             <%= form_for(@vote, :html => {:'data-type' => 'json'}) do |f| %>
               <% if @vote.errors.any? %>
@@ -23,6 +24,7 @@
       </br>
       <h2>Temperature: </h2>
       </br>
+      <div id="slider"></div>
       <div id="slider"></div>
     </br>
       <input id="rating" type="hidden" name="vote[amount]" value="0" />
@@ -53,14 +55,12 @@
             value:0,
             min: -50,
             max: 50,
-            animate: true,
             slide: function( event, ui ) {
                 $("#rating").val(ui.value);
                 oright = .7 + ui.value*0.01;
                 oleft = .7 - ui.value*0.01;
                 wright = 50 + ui.value*1;
                 wleft = 50 - ui.value *1;
-
                 if(ui.value > 10) {
                   $("#Cold").parent().fadeOut();
                   $("#Hot").parent().fadeIn();
