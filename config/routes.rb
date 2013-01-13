@@ -1,4 +1,8 @@
 GreenVote::Application.routes.draw do
+  get "contact/index"
+
+  get "how/index"
+
   get "about/index"
 
   ActiveAdmin.routes(self)
@@ -6,16 +10,12 @@ GreenVote::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :votes
-
-  resources :about
   
   resources :buildings do
     collection { post :import }
   end
 
   devise_for :users
-  
-  resources :rooms
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

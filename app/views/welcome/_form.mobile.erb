@@ -1,43 +1,39 @@
-
-<div class="hero-unit">
-            <%= form_for(@vote, :html => {:'data-type' => 'json'}) do |f| %>
-              <% if @vote.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
-                 <ul>
-                  <% @vote.errors.full_messages.each do |msg| %>
-                   <li><%= msg %></li>
-              <% end %>
-              </ul>
-            </div>
+<script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
+<div class="hero-unit" id="main">
+  <%= form_for(@vote, :html => {:'data-type' => 'json'}) do |f| %>
+    <% if @vote.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+        <ul>
+          <% @vote.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
           <% end %>
-        <div>
-        <h2><%= f.label :building_id, "Where are you?" %> </h2>
-        <%= f.collection_select :building_id, Building.order(:name), :id, :name, include_blank: true%>
-        </div>
-        <div>
-          </br>
-          <h2> <%= f.label :room_id, "Room:" %> </h2>
-          <%= f.grouped_collection_select :room_id, Building.order(:name), :rooms, :name , :id, :name,include_blank: true%>
-        </div>
-      <div>
+        </ul>
+      </div>
+    <% end %>
+    <div>
+      <h2><%= f.label :building_id, "Where are you?" %> </h2>
+      <%= f.collection_select :building_id, Building.order(:name), :id, :name, include_blank: true%>
+    </div>
+    <div>
+      </br>
+      <h2> <%= f.label :room_id, "Room:" %> </h2>
+      <%= f.grouped_collection_select :room_id, Building.order(:name), :rooms, :name , :id, :name,include_blank: true%>
+    </div>
+    <div>
       </br>
       <h2>Temperature: </h2>
       </br>
-      <input class="hidden-desktop" type="range" name="slider-fill" id="slider" value="0" min="-50" max="50" data-highlight="true" orientation="vertical"/>
-    </br>
+      <div id="slider"></div>
+      </br>
       <input id="rating" type="hidden" name="vote[amount]" value="0" />
-      <input class="btn btn-large btn-success" name="commit" type="submit" value="GreenVote!">
-      </div>
-          <% end %>
-        </div>
+      <input id="submit" class="btn btn-large btn-success" name="commit" type="submit" value="GreenVote!">
     </div>
+  <% end %>
+</div>
     <script type="text/javascript">
       $("#left").css("opacity",.7);
       $("#right").css("opacity",.7);
-      $( "#slider" ).slider({
-          create: function(event, ui) {}
-      });
       $('#vote_building_id').change(function() {
           if($("#slider").slider("value") == 0) {
           $("#Cold").parent().fadeIn();
@@ -50,27 +46,31 @@
           });
         }
       });
-
       $(function() {
-        $( "#slider" ).on('change', function( event, ui ) {
-                $("#rating").val($("#slider").val());
-                oright = .7 + $("#slider").val()*0.01;
-                oleft = .7 - $("#slider").val()*0.01;
-                wright = 50 + $("#slider").val()*1;
-                wleft = 50 - $("#slider").val() *1;
-
-                if($("#slider").val() > 10) {
+        $( "#slider" ).slider({
+            orientation: "vertical",
+            range: "min",
+            value:0,
+            min: -50,
+            max: 50,
+            slide: function( event, ui ) {
+                $("#rating").val(ui.value);
+                oright = .7 + ui.value*0.01;
+                oleft = .7 - ui.value*0.01;
+                wright = 50 + ui.value*1;
+                wleft = 50 - ui.value *1;
+                if(ui.value > 10) {
                   $("#Cold").parent().fadeOut();
                   $("#Hot").parent().fadeIn();
                   $("#justright").parent().fadeOut();
                 }
-                if($("#slider").val() < -10) {
+                if(ui.value < -10) {
                   $("#Cold").parent().fadeIn();
                   $("#Hot").parent().fadeOut();
                   $("#justright").parent().fadeOut();
                 }
 
-                if($("#slider").val() <= 10 && $("#slider").val() >= -10 && $("#Hot").text() != "About Right") {
+                if(ui.value <= 10 && ui.value >= -10 && $("#Hot").text() != "About Right") {
                   $("#Cold").parent().fadeIn();
                   $("#Hot").parent().fadeIn();
                   $('#Cold').fadeOut(100, function() {
@@ -81,24 +81,24 @@
                   });
                 }
 
-                if($("#slider").val() > 10 && $("#slider").val() < 30) {
+                if(ui.value > 10 && ui.value < 30) {
                   $('#Hot').fadeOut(100, function() {
                     $(this).text("It's Hot!").fadeIn(100);
                   });
                 }
 
-                if($("#slider").val() >= 30) {
+                if(ui.value >= 30) {
                   $('#Hot').fadeOut(100, function() {
                     $(this).text("It's Too Hot!").fadeIn(100);
                   });
                 }
-                if($("#slider").val() < -10 && $("#slider").val() > -30) {
+                if(ui.value < -10 && ui.value > -30) {
                   $('#Cold').fadeOut(100, function() {
                     $(this).text("It's Cold!").fadeIn(100);
                   });
                 }
                 
-                if($("#slider").val() <= -30) {
+                if(ui.value <= -30) {
                   $('#Cold').fadeOut(100, function() {
                     $(this).text("It's Too Cold!").fadeIn(100);
                   });
@@ -115,6 +115,6 @@
                 }, 10, function() {
                 });
             }
-    );
-});
+        });
+    });
   </script>

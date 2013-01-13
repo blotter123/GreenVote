@@ -1,38 +1,36 @@
 <script src="https://raw.github.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"></script>
-<div class="hero-unit">
-            <%= form_for(@vote, :html => {:'data-type' => 'json'}) do |f| %>
-              <% if @vote.errors.any? %>
-              <div id="error_explanation">
-                <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
-                 <ul>
-                  <% @vote.errors.full_messages.each do |msg| %>
-                   <li><%= msg %></li>
-              <% end %>
-              </ul>
-            </div>
+<div class="hero-unit" id="main">
+  <%= form_for(@vote, :html => {:'data-type' => 'json'}) do |f| %>
+    <% if @vote.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@vote.errors.count, "error") %> prohibited this vote from being saved:</h2>
+        <ul>
+          <% @vote.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
           <% end %>
-        <div>
-        <h2><%= f.label :building_id, "Where are you?" %> </h2>
-        <%= f.collection_select :building_id, Building.order(:name), :id, :name, include_blank: true%>
-        </div>
-        <div>
-          </br>
-          <h2> <%= f.label :room_id, "Room:" %> </h2>
-          <%= f.grouped_collection_select :room_id, Building.order(:name), :rooms, :name , :id, :name,include_blank: true%>
-        </div>
-      <div>
+        </ul>
+      </div>
+    <% end %>
+    <div>
+      <h2><%= f.label :building_id, "Where are you?" %> </h2>
+      <%= f.collection_select :building_id, Building.order(:name), :id, :name, include_blank: true%>
+    </div>
+    <div>
+      </br>
+      <h2> <%= f.label :room_id, "Room:" %> </h2>
+      <%= f.grouped_collection_select :room_id, Building.order(:name), :rooms, :name , :id, :name,include_blank: true%>
+    </div>
+    <div>
       </br>
       <h2>Temperature: </h2>
       </br>
       <div id="slider"></div>
-      <div id="slider"></div>
-    </br>
+      </br>
       <input id="rating" type="hidden" name="vote[amount]" value="0" />
-      <input class="btn btn-large btn-success" name="commit" type="submit" value="GreenVote!">
-      </div>
-          <% end %>
-        </div>
+      <input id="submit" class="btn btn-large btn-success" name="commit" type="submit" value="GreenVote!">
     </div>
+  <% end %>
+</div>
     <script type="text/javascript">
       $("#left").css("opacity",.7);
       $("#right").css("opacity",.7);
